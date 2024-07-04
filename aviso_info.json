@@ -1,0 +1,91 @@
+const isPreview = false;
+const usersViews =  57 
+const antiquity =  'Publicado hace 41 días' 
+const toggleVisitSchedule =  true ;
+const enableNotes =  true ;
+const enableSlider =  true ;
+const seoModule = false;
+const urlProfesional =  {"url":null,"active":false} ;
+
+
+const mapLatOf =  "MjAuNjI3NTQ5MjQzODc1MjQw";
+const mapLngOf =  "LTg3LjEwMTEzODI5MzExNTIzMA==";
+const urlMapOf = "Ly9tYXBzLmdvb2dsZS5jb20vbWFwcy9hcGkvc3RhdGljbWFwP2NlbnRlcj0yMC42Mjc1NDkyNDM4NzUyNDAsLTg3LjEwMTEzODI5MzExNTIzMCZ6b29tPTE2Jm1hcmtlcnM9MjAuNjI3NTQ5MjQzODc1MjQwLC04Ny4xMDExMzgyOTMxMTUyMzAma2V5PUFJemFTeUJmVE94dVlFbWJMNTBfMVA0S1U4R0k4dG9LVDUzOWFnSSZzaXplPTc4MHg0NTYmc2Vuc29yPXRydWUmc2NhbGU9MiZzaWduYXR1cmU9SjJWRlllaGFlQm5yNk9jSnlkVnpGVDF0X1JNPSZjaGFubmVsPXJwZmljLWkyNA==";
+
+const showInfoDev = {
+    
+};
+
+const avisoInfo = {
+    
+    
+    
+    "similarLink": '/terrenos-en-venta-en-playa-del-carmen.html',
+    
+    
+    'similarLinkMostVisit': '/terrenos-en-venta-en-playa-del-carmen-ordenado-por-visitas-descendente.html',
+    
+    
+    "urlBack": '/terrenos-en-venta-en-playa-del-carmen.html',
+    
+    'pixelPlus':  false ,
+    
+    'idAviso': '143531609',
+    'requestVisit5A':  false ,
+    'cronut5A': {"activeModal5A":false,"requestVisit5AUrl":null,"cronutSell":false,"cronutRent":false,"ownershipRede":null},
+    'enableBannerFicha': false,
+    
+    'postingCode': "TERRCM",
+    
+    'postingType': 'PROPERTY',
+    'status': 'ONLINE',
+    'reserved': 'false',
+    
+    'pricesData': [{"lowPricePercentage":null,"operationType":{"name":"venta","operationTypeId":"1"},"prices":[{"isoCode":"MXN","currencyId":"10","currency":"MN","amount":4500000,"formattedAmount":"4,500,000"}]}],
+    
+    'price': 'MN 4,500,000',
+    
+    
+    'generalFeatures': {"Características generales":{"203":{"featureId":"203","label":"M&sup2; de frente","measure":null,"value":"20","icon":null},"204":{"featureId":"204","label":"M&sup2; de fondo","measure":null,"value":"30","icon":null},"205":{"featureId":"205","label":"Forma del terreno","measure":null,"value":"Regular","icon":null},"219":{"featureId":"219","label":"Uso de suelo","measure":null,"value":"4","icon":null}}},
+    
+    
+    'location': {"locationId":"V1-D-86947","name":"Playa del Carmen","label":"ZONA","depth":3,"parent":{"locationId":"V1-C-2056","name":"Solidaridad","label":"CIUDAD","depth":2,"parent":{"locationId":"V1-B-83","name":"Quintana Roo","label":"PROVINCIA","depth":1,"parent":{"locationId":"V1-A-18","name":"Mexico","label":"PAIS","depth":0,"parent":null,"acronym":null},"acronym":null},"acronym":null},"acronym":null},
+    
+    
+    'description': "Vendo Terreno en Playa del Carmen <br>A sólo unos pasos del Arco Vial <br><br>A 300 metros de la plaza Centro Maya donde encontrarás supermercados, cine, bancos, restaurantes, tiendas departamentales, etc. <br><br>USO DE SUELO: MIXTO COMERCIAL - DENSIDAD ALTA <br><br>Ideal para oficinas o desarrollo residencial <br><br>600 m2 de superficie <br>20 frente x 30 fondo <br>Servicios: <br>Pavimento <br>Electricidad <br>Agua Potable <br>Alumbrado publico <br>Red de desagües pluviales <br><br>FACIL ACCESO A CARRETERA FEDERAL <br>A SOLO 8 MINUTOS DE XCARET y otros parques temáticos <br>A 8 MINUTOS DE LA PLAYA Y QUINTA AVENIDA <br><br>Se encuentra ubicado entre un Restaurante y próximamente oficinas de Seguros. <br><br>Papeles en regla <br>Escriturado",
+    
+    
+    'address': {"name":"Avenida Joya Real, Ejidal ,Playa del Carmen","visibility":"EXACT"},
+    
+    
+    'mapZoom': 16,
+    
+    'urlMap': urlMapOf,
+    'mapLat': mapLatOf,
+    'mapLng': mapLngOf,
+    
+    
+    'visibility' :'EXACT',
+    
+    
+    
+    'propertyTypeId': '3',
+    
+    'publisher': {
+        'publisherId': '102293886',
+        'name': 'ANA MARTINEZ ',
+        'url': '/inmobiliarias/ana-martinez_102293886-inmuebles.html',
+        'urlLogo': 'https://img10.naventcdn.com/empresas/18/01/02/29/38/86/130x70/logo_ana-martinez_1718062578985.jpg',
+        'premium':  false ,
+        'id' : '102293886',
+        
+        'license': '',
+        'partialPhone': '98415',
+        'publisherTypeId': 2
+    },
+    'whatsApp': '52 1 9841578578',
+    'premier':true,
+    'partialPhone': '98415',
+    'duplicated':  false ,
+    
+        'pictures': [{"multimediaTypeId":2,"order":1,"height":1200,"width":1600,"resizeUrl1200x1200":"https://img10.naventcdn.com/avisos/resize/18/01/43/53/16/09/1200x1200/1461357096.jpg?isFirstImage=true","url1200x1200":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/1200x1200/1461357096.jpg?isFirstImage=true","url730x532":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/720x532/1461357096.jpg?isFirstImage=true","url360x266":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/360x266/1461357096.jpg?isFirstImage=true","url215x159":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/215x159/1461357096.jpg?isFirstImage=true","url100x75":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/100x75/1461357096.jpg?isFirstImage=true","url130x70":null,"title":"Terreno / Lote , Solidaridad"},{"multimediaTypeId":2,"order":2,"height":1208,"width":1778,"resizeUrl1200x1200":"https://img10.naventcdn.com/avisos/resize/18/01/43/53/16/09/1200x1200/1461357098.jpg","url1200x1200":"https://img10.naventcdn.com/avisos/resize/18/01/43/53/16/09/1200x1200/1461357098.jpg","url730x532":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/720x532/1461357098.jpg","url360x266":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/360x266/1461357098.jpg","url215x159":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/215x159/1461357098.jpg","url100x75":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/100x75/1461357098.jpg","url130x70":null,"title":"Terreno / Lote en venta  Playa del Carmen"},{"multimediaTypeId":2,"order":3,"height":1200,"width":1600,"resizeUrl1200x1200":"https://img10.naventcdn.com/avisos/resize/18/01/43/53/16/09/1200x1200/1461357099.jpg","url1200x1200":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/1200x1200/1461357099.jpg","url730x532":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/720x532/1461357099.jpg","url360x266":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/360x266/1461357099.jpg","url215x159":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/215x159/1461357099.jpg","url100x75":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/100x75/1461357099.jpg","url130x70":null,"title":"Vendo Terreno en Playa del Carmen <br>A sólo unos pasos del Arco Vial <br><br>A "},{"multimediaTypeId":2,"order":4,"height":786,"width":2074,"resizeUrl1200x1200":"https://img10.naventcdn.com/avisos/resize/18/01/43/53/16/09/1200x1200/1461357092.jpg","url1200x1200":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/1200x1200/1461357092.jpg","url730x532":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/720x532/1461357092.jpg","url360x266":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/360x266/1461357092.jpg","url215x159":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/215x159/1461357092.jpg","url100x75":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/100x75/1461357092.jpg","url130x70":null,"title":"Terreno / Lote venta 600m² "},{"multimediaTypeId":2,"order":5,"height":1200,"width":1600,"resizeUrl1200x1200":"https://img10.naventcdn.com/avisos/resize/18/01/43/53/16/09/1200x1200/1461357102.jpg","url1200x1200":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/1200x1200/1461357102.jpg","url730x532":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/720x532/1461357102.jpg","url360x266":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/360x266/1461357102.jpg","url215x159":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/215x159/1461357102.jpg","url100x75":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/100x75/1461357102.jpg","url130x70":null,"title":"Terreno / Lote 600m² venta Playa del Carmen"},{"multimediaTypeId":2,"order":6,"height":806,"width":2072,"resizeUrl1200x1200":"https://img10.naventcdn.com/avisos/resize/18/01/43/53/16/09/1200x1200/1461357097.jpg","url1200x1200":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/1200x1200/1461357097.jpg","url730x532":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/720x532/1461357097.jpg","url360x266":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/360x266/1461357097.jpg","url215x159":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/215x159/1461357097.jpg","url100x75":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/100x75/1461357097.jpg","url130x70":null,"title":"Terreno / Lote 600m² venta Playa del Carmen"},{"multimediaTypeId":2,"order":7,"height":1200,"width":1600,"resizeUrl1200x1200":"https://img10.naventcdn.com/avisos/resize/18/01/43/53/16/09/1200x1200/1461357101.jpg","url1200x1200":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/1200x1200/1461357101.jpg","url730x532":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/720x532/1461357101.jpg","url360x266":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/360x266/1461357101.jpg","url215x159":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/215x159/1461357101.jpg","url100x75":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/100x75/1461357101.jpg","url130x70":null,"title":"Terreno / Lote  venta MN 4,500,000"},{"multimediaTypeId":2,"order":8,"height":1102,"width":1892,"resizeUrl1200x1200":"https://img10.naventcdn.com/avisos/resize/18/01/43/53/16/09/1200x1200/1461357100.jpg","url1200x1200":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/1200x1200/1461357100.jpg","url730x532":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/720x532/1461357100.jpg","url360x266":"https://img10.naventcdn.com/avisos/18/01/43/53/16/09/360x266/1461357100.jpg","url215x159":"https://img10.naventcdn.com/avisos/1…

@@ -1,0 +1,205 @@
+{
+        
+        
+        
+        "similarLink": '/departamentos-en-renta-en-juarez-ciudad-de-cuauhtemoc-con-2-recamaras.html',
+        
+        
+        'similarLinkMostVisit': '/departamentos-en-renta-en-juarez-ciudad-de-cuauhtemoc-ordenado-por-visitas-descendente.html',
+        
+        
+        "urlBack": '/departamentos-en-renta-en-juarez-ciudad-de-cuauhtemoc-con-2-recamaras.html',
+        
+        'pixelPlus':  false ,
+        
+        'idAviso': '143611198',
+        'requestVisit5A': 'https://full.inmuebles24.com/imovel/894494719/agendar?utm_source=inmuebles24&utm_medium=referral&utm_campaign=cronut_rent&utm_term=Premier',
+        'cronut5A': {"activeModal5A":true,"requestVisit5AUrl":"https://full.inmuebles24.com/imovel/894494719/agendar?utm_source=inmuebles24&utm_medium=referral&utm_campaign=cronut_rent&utm_term=Premier","cronutSell":false,"cronutRent":true,"ownershipRede":"1P"},
+        'enableBannerFicha': true,
+        
+        'postingCode': "894494719",
+        
+		'postingType': 'PROPERTY',
+		'status': 'OFFLINE',
+        'reserved': 'false',
+        
+        'pricesData': [{"lowPricePercentage":null,"operationType":{"name":"renta","operationTypeId":"2"},"prices":[{"isoCode":"MXN","currencyId":"10","currency":"MN","amount":22000,"formattedAmount":"22,000"}]}],
+        
+        'price': 'MN 22,000',
+        
+        'expenses':'2349',
+        
+        
+        'similarPostingsLink': '/departamentos-en-renta-en-juarez-ciudad-de-cuauhtemoc-con-2-recamaras.html',
+        'similarPostingsLinkDescription': 'Tenemos &lt;strong&gt;80 Departamentos en Renta de 2 Recámaras en &lt;span class&#x3D;&#x27;capitalize&#x27;&gt;Juárez&lt;/span&gt; &lt;/strong&gt;Para tí',
+        
+        'generalFeatures': {"Características generales":{"177":{"featureId":"177","label":"Mascotas","measure":null,"value":null,"icon":null}},"Servicios":{"21":{"featureId":"21","label":"Gimnasio","measure":null,"value":null,"icon":null}}},
+        
+        
+        'location': {"locationId":"V1-D-23842","name":"Juárez","label":"ZONA","depth":3,"parent":{"locationId":"V1-C-517","name":"Cuauhtémoc","label":"CIUDAD","depth":2,"parent":{"locationId":"V1-B-69","name":"Ciudad de México","label":"PROVINCIA","depth":1,"parent":{"locationId":"V1-A-18","name":"Mexico","label":"PAIS","depth":0,"parent":null,"acronym":null},"acronym":"CDMX"},"acronym":null},"acronym":null},
+        
+        
+        'description': "¡Renta rápido, fácil y sin aval! <br />Agenda ahora una visita usando los botones al costado.<br /><br />- Renta: $ 22,000<br />- Mantenimiento: $ 2,349<br /><br />Sofa cama, sillon, cocina integral, dos closets, escritorio, sillas de escritorio y desayunador, refrigerador y lavadora.",
+        
+        
+        'address': {"name":"Avenida Juarez","visibility":"EXACT"},
+        
+        
+        'mapZoom': 16,
+        
+        'urlMap': urlMapOf,
+        'mapLat': mapLatOf,
+        'mapLng': mapLngOf,
+        
+        
+        'visibility' :'EXACT',
+        
+        
+        
+        'propertyTypeId': '2',
+        
+        'publisher': {
+            'publisherId': '51288591',
+            'name': 'Inmuebles24 FULL',
+            'url': '/inmobiliarias/inmuebles24-full_51288591-inmuebles.html',
+            'urlLogo': 'https://img10.naventcdn.com/empresas/18/00/51/28/85/91/130x70/logo_inmuebles24-full_1712765672136.jpg',
+            'premium':  false ,
+			'id' : '51288591',
+			
+            'license': '',
+            'partialPhone': '+52 5',
+            'publisherTypeId': 2
+        },
+        'whatsApp': '52 1 5541704165',
+        'premier':true,
+        'partialPhone': '+52 5',
+        'duplicated':  false ,
+        
+            'pictures': [{"multimediaTypeId":2,"order":0,"height":560,"width":840,"resizeUrl1200x1200":"https://img10.naventcdn.com/avisos/resize/18/01/43/61/11/98/1200x1200/1465198793.jpg","url1200x1200":"https://img10.naventcdn.com/avisos/18/01/43/61/11/98/1200x1200/1465198793.jpg","url730x532":"https://img10.naventcdn.com/avisos/18/01/43/61/11/98/720x532/1465198793.jpg","url360x266":"https://img10.naventcdn.com/avisos/18/01/43/61/11/98/360x266/1465198793.jpg","url215x159":"https://img10.naventcdn.com/avisos/18/01/43/61/11/98/215x159/1465198793.jpg","url100x75":"https://img10.naventcdn.com/avisos/18/01/43/61/11/98/100x75/1465198793.jpg","url130x70":null,"title":"Departamento · 65m² · 2 recámaras"}],
+        
+        
+        
+        
+        
+		
+        'mainFeatures': {"CFT100":{"featureId":"CFT100","label":"tot.","measure":"m²","value":"65","icon":"stotal"},"CFT101":{"featureId":"CFT101","label":"cub.","measure":"m²","value":"65","icon":"scubierta"},"CFT3":{"featureId":"CFT3","label":"baño","measure":null,"value":"1","icon":"bano"},"CFT2":{"featureId":"CFT2","label":"rec.","measure":null,"value":"2","icon":"dormitorio"},"CFT5":{"featureId":"CFT5","label":"Antigüedad","measure":null,"value":"A estrenar","icon":"antiguedad"}},
+        
+		
+        'realEstateType': {"name":"Apartamento","realEstateTypeId":"2"},
+        
+        
+        'publicationAreaId': "3",
+        
+        
+        
+        'publicationDateFormatted': '2024-05-23T01:01:19Z',
+        'isUnit': false,
+        
+        'featuresWithIcon':  [] ,
+    }
+    const dataLayerInfo = {
+    
+        'operationType' : 'renta',
+        'propertyType' : 'Departamento',
+        'listingCategory' : 'clasificados',
+        'neighborhood' : 'Juárez',
+        'city' : 'Cuauhtémoc',
+        'province' : 'Ciudad de México',
+        'sellPrice' : '  ',
+        'rentalPrice' : 'MN 22000',
+    
+    }
+    const siteInfo = {
+    
+        'url': 'https://www.inmuebles24.com',
+        'name': 'Inmuebles24',
+        'id' : '24MX',
+        'staticUrl': "https://img10.naventcdn.com/ficha/RPFICv5.252.0-RC2/",
+        'publishUrl': '/publica-tu-propiedad',
+    
+    
+        'terms': {
+            'label' : 'Términos y condiciones de Uso',
+            'url': 'https://help.inmuebles24.com/s/article/terminos-y-condiciones-de-uso-i24'
+        },
+    
+    
+		'policy': {
+			'label' : 'Política de privacidad',
+			'url': 'https://help.inmuebles24.com/s/article/Aviso-de-Privacidad'
+		},
+    
+    
+		'environment': '3'
+	
+    }
+    const doubleClick = {
+    
+        
+        'provinceId': '69',
+        
+        
+        'cityId': '517',
+        
+        
+        'neighborhoodId' : '23842',
+        
+        
+        'price': '22000',
+        
+        
+        'currencyId': '10',
+        
+        
+        'operationTypeId': '2'
+        
+    
+    }
+    const googleClientId = '1013517722907-rrtaai7b7n9rh2oupl04g139j78idb81.apps.googleusercontent.com';
+    const facebookAppId = '1439390149611511';
+    const calculator = {
+        
+            'enabled': false,
+        
+        
+        	'enabledSimulator': false
+        
+    }
+    const device = 'desktop';
+    const isMobile = false;
+    const platform = 'UNKNOWN';
+    const rankingPostingExperimentId = ''
+    let userData = {}
+    const unitsSummary = false;
+    
+    const showGuaranty =  true;
+    const guarantyLink = false;
+    const showGuarantyFooterLink =  false;
+
+    const showNewPublisher = false;
+
+    const showNewPublisherLink = true;
+
+    const enableDiscardPosting = true;
+
+    const enableCheckReport = true;
+    
+    const enableRenterProfile = true;
+
+    const enableDevelopmentProfile = true;;
+    
+    const mirrorShowRibbon = false;;
+    
+	const enableCookiesConsentMode = false;
+
+    const enableCookiesPolicyBanner = true;
+
+    const enableHeadbandAppMobile = false;
+
+    const enableTurnstile =  true;
+
+		const cintilloClosed = false;
+
+    const headerLinks = [{"title":"Comprar","simpleLink":false,"seoHide":false,"tag":null,"categories":[{"title":"Estado","links":[{"url":"/inmuebles-en-venta-en-ciudad-de-mexico.html","wording":"Ciudad de México","tag":null},{"url":"/inmuebles-en-venta-en-edo.-de-mexico.html","wording":"Edo. de México","tag":null},{"url":"/inmuebles-en-venta-en-queretaro-provincia.html","wording":"Querétaro","tag":null},{"url":"/inmuebles-en-venta-en-morelos-provincia.html","wording":"Morelos","tag":null},{"url":"/inmuebles-en-venta-en-nuevo-leon.html","wording":"Nuevo León","tag":null},{"url":"/inmuebles-en-venta-en-yucatan.html","wording":"Yucatán","tag":null},{"url":"/inmuebles-en-venta-en-quintana-roo-provincia.html","wording":"Quintana Roo","tag":null},{"url":"/inmuebles-en-venta-en-jalisco.html","wording":"Jalisco","tag":null},{"url":"/inmuebles-en-venta-en-veracruz-provincia.html","wording":"Veracruz","tag":null},{"url":"/inmuebles-en-venta-en-puebla-provincia.html","wording":"Puebla","tag":null},{"url":"/inmuebles-en-venta-en-hidalgo-provincia.html","wording":"Hidalgo","tag":null},{"url":"/inmuebles-en-venta-en-guerrero-provincia.html","wording":"Guerrero","tag":null},{"url":"/inmuebles-en-venta-en-san-luis-potosi-provincia.html","wording":"San luis Potosí","tag":null},{"url":"/inmuebles-en-venta-en-coahuila.html","wording":"Coahuila","tag":null},{"url":"/inmuebles-en-venta-en-durango-provincia.html","wording":"Durango","tag":null},{"url":"/inmuebles-en-venta-en-guanajuato-provincia.html","wording":"Guanajuato","tag":null},{"url":"/inmuebles-en-venta-en-chiapas.html","wording":"Chiapas","tag":null},{"url":"/inmuebles-en-venta-en-chihuahua-provincia.html","wording":"Chihuahua","tag":null},{"url":"/inmuebles-en-venta-en-tamaulipas.html","wording":"Tamaulipas","tag":null},{"url":"/inmuebles-en-venta-en-baja-california-norte.html","wording":"Baja California Norte","tag":null}]},{"title":"Tipo de propiedad","links":[{"url":"/casas-en-venta.html","wording":"Casa","tag":null},{"url":"/departamentos-en-venta.html","wording":"Departamento","tag":null},{"url":"/terrenos-en-venta.html","wording":"Terreno / Lote","tag":null},{"url":"/casa-en-condominio-en-venta.html","wording":"Casa en condominio","tag":null},{"url":"/locales-comerciales-en-venta.html","wording":"Local Comercial","tag":null}]},{"title":"Recámaras","links":[{"url":"/inmuebles-en-venta-con-3-recamaras.html","wording":"3 recámaras","tag":null},{"url":"/inmuebles-en-venta-con-2-recamaras.html","wording":"2 recámaras","tag":null},{"url":"/inmuebles-en-venta-con-4-recamaras.html","wording":"4 recámaras","tag":null},{"url":"/inmuebles-en-venta-mas-de-5-recamaras.html","wording":"5 o más recámaras","tag":null},{"url":"/inmuebles-en-venta-con-1-recamara.html","wording":"1 recámara","tag":null}]},{"title":"Servicios","links":[{"url":"https://www.inmuebles24.com/noticias/noticias/venta/el-abc-de-comprar-o-rentar-una-propiedad/","wording":"El ABC de comprar y rentar una propiedad","tag":null},{"url":"https://www.inmuebles24.com/noticias/noticias/venta/guia-para-comprar-un-inmueble/","wording":"Guía para comprar un inmueble","tag":null},{"url":"https://www.inmuebles24.com/noticias/sabias-que/como-saber-el-precio-de-mi-casa/","wording":"¿Cómo saber el precio de mi casa?","tag":null},{"url":"https://www.inmuebles24.com/publica-tu-propiedad","wording":"Publicar inmueble para venta","tag":null}]}]},{"title":"Rentar","simpleLink":false,"seoHide":false,"tag":null,"categories":[{"title":"Estado","links":[{"url":"/inmuebles-en-renta-en-ciudad-de-mexico.html","wording":"Ciudad de México","tag":null},{"url":"/inmuebles-en-renta-en-edo.-de-mexico.html","wording":"Edo. de México","tag":null},{"url":"/inmuebles-en-renta-en-nuevo-leon.html","wording":"Nuevo León","tag":null},{"url":"/inmuebles-en-renta-en-queretaro-provincia.html","wording":"Querétaro","tag":null},{"url":"/inmuebles-en-renta-en-jalisco.html","wording":"Jalisco","tag":null},{"url":"/inmuebles-en-renta-en-puebla-provincia.html","wording":"Puebla","tag":null},{"url":"/inmuebles-en-renta-en-veracruz-provincia.html","wording":"Veracruz","tag":null},{"url":"/inmuebles-en-renta-en-morelos-provincia.html","wording":"Morelos","tag":null},{"url":"/inmuebles-en-renta-en-quintana-roo-provincia.html","wording":"Quintana Roo","tag":null},{"url":"/inmuebles-en-renta-en-yucatan.html","wording":"Yucatán","tag":null},{"url":"/inmuebles-en-renta-en-chihuahua-provincia.html","wording":"Chihuahua","tag":null},{"url":"/inmuebles-en-renta-en-coahuila.html","wording":"Coahuila","tag":null},{"url":"/inmuebles-en-renta-en-san-luis-potosi-provincia.html","wording":"San luis Potosí","tag":null},{"url":"/inmuebles-en-renta-en-durango-provincia.html","wording":"Durango","tag":null},{"url":"/inmuebles-en-renta-en-guanajuato-provincia.html","wording":"Guanajuato","tag":null},{"url":"/inmuebles-en-renta-en-guerrero-provincia.html","wording":"Guerrero","tag":null},{"url":"/inmuebles-en-renta-en-tamaulipas.html","wording":"Tamaulipas","tag":null},{"url":"/inmuebles-en-renta-en-chiapas.html","wording":"Chiapas","tag":null},{"url":"/inmuebles-en-renta-en-sonora.html","wording":"Sonora","tag":null},{"url":"/inmuebles-en-renta-en-baja-california-norte.html","wording":"Baja California Norte","tag":null}]},{"title":"Tipo de propiedad","links":[{"url":"/departamentos-en-renta.html","wording":"Departamento","tag":null},{"url":"/oficinas-en-renta.html","wording":"Oficina","tag":null},{"url":"/casas-en-renta.html","wording":"Casa","tag":null},{"url":"/locales-comerciales-en-renta.html","wording":"Local Comercial","tag":null},{"url":"/bodegas-comerciales-en-renta.html","wording":"Bodega comercial","tag":null}]},{"title":"Recámaras","links":[{"url":"/inmuebles-en-renta-con-3-recamaras.html","wording":"3 recámaras","tag":null},{"url":"/inmuebles-en-renta-con-2-recamaras.html","wording":"2 recámaras","tag":null},{"url":"/inmuebles-en-renta-con-4-recamaras.html","wording":"4 recámaras","tag":null},{"url":"/inmuebles-en-renta-con-1-recamara.html","wording":"1 recámara","tag":null},{"url":"/inmuebles-en-renta-mas-de-5-recamaras.html","wording":"5 o más recámaras","tag":null}]},{"title":"Servicios","links":[{"url":"https://www.inmuebles24.com/noticias/noticias/venta/el-abc-de-comprar-o-rentar-una-propiedad/","wording":"El ABC de comprar y rentar un propiedad","tag":null},{"url":"https://www.inmuebles24.com/noticias/noticias/renta/guia-para-rentar-un-inmueble/","wording":"Guía para rentar un inmueble","tag":null},{"url":"https://www.inmuebles24.com/noticias/noticias/renta/calcula-el-precio-correcto-de-renta-de-un-inmueble/","wording":"Calcula el precio correcto de renta de un inmueble","tag":null},{"url":"https://www.inmuebles24.com/publica-tu-propiedad","wording":"Publicar inmueble para renta","tag":null}]}]},{"title":"Temporal","simpleLink":false,"seoHide":false,"tag":null,"categories":[{"title":"Estado","links":[{"url":"/inmuebles-en-temporal-vacacional-en-guerrero-provincia.html","wording":"Guerrero","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-jalisco.html","wording":"Jalisco","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-morelos-provincia.html","wording":"Morelos","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-quintana-roo-provincia.html","wording":"Quintana Roo","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-nayarit.html","wording":"Nayarit","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-yucatan.html","wording":"Yucatán","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-ciudad-de-mexico.html","wording":"Ciudad de México","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-edo.-de-mexico.html","wording":"Edo. de México","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-queretaro-provincia.html","wording":"Querétaro","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-guanajuato-provincia.html","wording":"Guanajuato","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-puebla-provincia.html","wording":"Puebla","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-oaxaca.html","wording":"Oaxaca","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-veracruz-provincia.html","wording":"Veracruz","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-sinaloa-provincia.html","wording":"Sinaloa","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-aguascalientes-provincia.html","wording":"Aguascalientes","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-chihuahua-provincia.html","wording":"Chihuahua","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-hidalgo-provincia.html","wording":"Hidalgo","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-baja-california-norte.html","wording":"Baja California Norte","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-coahuila.html","wording":"Coahuila","tag":null},{"url":"/inmuebles-en-temporal-vacacional-en-nuevo-leon.html","wording":"Nuevo León","tag":null}]},{"title":"Tipo de propiedad","links":[{"url":"/departamentos-en-temporal-vacacional.html","wording":"Departamento","tag":null},{"url":"/casas-en-temporal-vacacional.html","wording":"Casa","tag":null},{"url":"/villa-en-temporal-vacacional.html","wording":"Villa","tag":null},{"url":"/casa-en-condominio-en-temporal-vacacional.html","wording":"Casa en condominio","tag":null},{"url":"/quinta-en-temporal-vacacional.html","wording":"Quinta","tag":null}]},{"title":"Recámaras","links":[{"url":"/inmuebles-en-temporal-vacacional-con-2-recamaras.html","wording":"2 recámaras","tag":null},{"url":"/inmuebles-en-temporal-vacacional-con-3-recamaras.html","wording":"3 recámaras","tag":null},{"url":"/inmuebles-en-temporal-vacacional-mas-de-5-recamaras.html","wording":"5 o más recámaras","tag":null},{"url":"/inmuebles-en-temporal-vacacional-con-4-recamaras.html","wording":"4 recámaras","tag":null},{"url":"/inmuebles-en-temporal-vacacional-con-1-recamara.html","wording":"1 recámara","tag":null}]}]},{"title":"Desarrollos","simpleLink":true,"seoHide":false,"tag":null,"categories":[{"title":null,"links":[{"url":"/desarrollos","wording":null,"tag":null}]}]},{"title":"Servicios","simpleLink":false,"seoHide":false,"tag":null,"categories":[{"title":"Seguro de arrendamiento","links":[{"url":"https://www.inmuebles24.com/noticias/noticias/renta/guia-para-rentar-un-inmueble/","wording":"¿Qué necesito para rentar?","tag":null},{"url":"https://www.inmuebles24.com/noticias/tips/tips-de-mudanza/","wording":"Tips de Mudanza","tag":null},{"url":"https://www.inmuebles24.com/noticias/sabias-que/te-mudas-de-ciudad-y-quieres-rentar-casa-considera-estas-ciudades/","wording":"Sugerencia de ciudades donde rentar","tag":null}]},{"title":"Inmuebles24 te explica","links":[{"url":"https://www.inmuebles24.com/noticias/noticias/4-consejos-para-sacarle-provecho-a-mi-cuenta-inmuebles24/","wording":"Sácale provecho a tu cuenta de Inmuebles24","tag":null},{"url":"https://www.inmuebles24.com/noticias/noticias/venta/guia-para-comprar-un-inmueble/","wording":"¿Qué necesito para comprar?","tag":null},{"url":"https://www.inmuebles24.com/noticias/noticias/venta/guia-para-vender-un-inmueble/","wording":"¿Qué necesito para vender?","tag":null},{"url":"https://www.inmuebles24.com/publica-tu-propiedad","wording":"Publica un inmueble","tag":null}]},{"title":"Importante tomar en cuenta","links":[{"url":"https://www.inmuebles24.com/cuantovale/#!/","wording":"¿Cuánto vale?","tag":null},{"url":"https://www.inmuebles24.com/noticias/sabias-que/como-consultar-el-adeudo-predial/","wording":"¿Cómo consultar el adeudo predial?","tag":null},{"url":"https://www.inmuebles24.com/noticias/sabias-que/que-impuestos-debo-pagar-al-comprar-o-vender-una-casa/","wording":"Impuestos a pagar al comprar o vender una casa","tag":null},{"url":"https://www.inmuebles24.com/noticias/noticias/venta/cuanto-cuesta-escriturar-una-casa-en-mexico/","wording":"Costo de escritura de una casa","tag":null},{"url":"https://www.inmuebles24.com/noticias/sabias-que/sabes-que-es-un-remate-hipotecario/","wording":"Remates Hipotecarios","tag":null},{"url":"https://help.inmuebles24.com/kb/es/article/%C2%BFc%C3%B3mo-denunciar-un-anuncio","wording":"Como evitar fraudes","tag":null}]},{"title":"Números del mercado","links":[{"url":"https://www.inmuebles24.com/noticias/cdmx-venta/","wording":"Index CDMX","tag":null},{"url":"https://www.inmuebles24.com/noticias/monterrey-venta/","wording":"Index Monterrey","tag":null},{"url":"https://www.inmuebles24.com/noticias/guadalajara-venta/","wording":"Index Guadalajara","tag":null}]},{"title":"Novedades","links":[{"url":"https://www.inmuebles24.com/noticias/noticias/","wording":"Actualidad","tag":null},{"url":"https://full.inmuebles24.com/?utm_campaign=d.crossI24full_cta_propval&utm_medium=cross_domain&utm_source=i24#sobre","wording":"Inmuebles24 FULL","tag":null},{"url":"https://www.inmuebles24.com/noticias/ranking-i24/","wording":"Rankings Inmuebles24","tag":null},{"url":"https://www.inmuebles24.com/noticias/tag/encuesta/","wording":"Encuestas","tag":null},{"url":"https://www.inmuebles24.com/noticias/sabias-que/","wording":"¿Sabías que?","tag":null}]}]}];
+
+    const newRelicBrowserTimingHeader = '&lt;script type&#x3D;&quot;text/javascript&quot;&gt;window.NREUM||(NREUM&#x3D;{});NREUM.info&#x3D;{&quot;errorBeacon&quot;:&quot;bam.nr-data.net&quot;,&quot;licenseKey&quot;:&quot;9e5469c271&quot;,&quot;agent&quot;:&quot;&quot;,&quot;beacon&quot;:&quot;bam.nr-data.net&quot;,&quot;applicationTime&quot;:58,&quot;applicationID&quot;:&quot;278689064&quot;,&quot;transactionName&quot;:&quot;NgQDZEJTVktZWxFYXA9OMkBCW1Zfe1cLRUEODQ1VQh1DSEpXFUNaBAUAVFVBREhKVxVYVgUABVVDTxdDXF0WUkEIERVZX1wCFhIVGEpaBVs6bh1vExAHBTkfGhxPCURdXhgQf30xGA&#x3D;&#x3D;&quot;,&quot;queueTime&quot;:0}
