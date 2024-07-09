@@ -125,9 +125,10 @@ async def process_regions_bfs(list_urls):
                             except Exception as e:
                                 print(f"An error occurred: {e}")                              
                             await browser.close()
+                        return
     
 
-async def add_coordinate_child():
+async def add_parent_id():
     # Load the datasets
     unit_properties_df = pd.read_csv(config.unit_properties_path)
     building_properties_df = pd.read_csv(config.parent_properties_path)
@@ -142,14 +143,10 @@ async def add_coordinate_child():
             if url in url_to_info:
                 continue
             url_to_info[url.strip()] = {
-                'longitude': row['longitude'],
-                'latitude': row['latitude'],
                 'parent_id': row['building_id']
             }
 
     # Initialize the Longitude, Latitude, and Parent ID columns in unit_properties_df
-    unit_properties_df['longitude'] = unit_properties_df['url'].map(lambda x: url_to_info.get(x, {}).get('longitude', None))
-    unit_properties_df['latitude'] = unit_properties_df['url'].map(lambda x: url_to_info.get(x, {}).get('latitude', None))
     unit_properties_df['parent_id'] = unit_properties_df['url'].map(lambda x: url_to_info.get(x, {}).get('parent_id', None))
     # Save the updated dataframe to the existing CSV file
     unit_properties_df.to_csv(config.unit_properties_path , index=False)
@@ -160,8 +157,8 @@ async def add_coordinate_child():
 # write it into "parent_data" if the property is parent property
 async def main():
     global unit_data, building_data
-    # await process_regions_bfs(['https://www.inmuebles24.com/inmuebles.html'])
-    await add_coordinate_child()
+    await process_regions_bfs(['https://www.inmuebles24.com/inmuebles.html'])
+    await add_parent_id()
     await aws.upload_aws()
 
        
