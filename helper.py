@@ -8,10 +8,8 @@ from pathlib import Path
 from urllib.parse import urljoin
 from selectolax.parser import HTMLParser
 from playwright.async_api import async_playwright
+import shortuuid
 
-
-auth = 'brd-customer-hl_acb2eb9e-zone-immutable24:wy51wnvm50zu'
-browser_url = f'https://{auth}@brd.superproxy.io:9222'
 # David: handling formats so that json.loads workds
 def regex_handling(content):
         # Replace single quotes around keys with double quotes
@@ -50,7 +48,7 @@ async def visit_and_scrape(url, browser):
     result_data_dictionary = {}
     #result_data_dictionary = grab_geo_location_data(parser, result_data_dictionary)
     result_data_dictionary = scrape_data_aviso(parser, result_data_dictionary)
-    result_data_dictionary['URL'] = url
+    result_data_dictionary['url'] = url
     print(result_data_dictionary)
     return result_data_dictionary
 
@@ -87,46 +85,25 @@ def building_or_unit(aviso_info_str, dictionary):
             units_found = re.findall(r'"url":"(.*?)"', info_str_find_unit.group())
             
             if units_found:
-                dictionary['Unit Urls'] = units_found
+                dictionary['unit_urls'] = units_found
                 child_urls_modified = ['https://www.inmuebles24.com' + url for url in dictionary['Unit Urls']]
-                dictionary['Unit Urls'] = ", ".join(child_urls_modified)
+                dictionary['unit_urls'] = ", ".join(child_urls_modified)
             else:
                 print('No units found in the building property.')
-                dictionary['Unit Urls'] = ''
+                dictionary['unit_urls'] = ''
     else:
         print("This is a unit")
         dictionary["is_building"] = False
     return dictionary
 
+def generate_building_id():
+    return str(shortuuid.uuid4())
 
 #David: update dictionary from avisoinfo
 def scrape_data_aviso(data, dictionary):
     dictionary = scrape_aviso(data, dictionary)
     return dictionary
 
-
-"""
-Sean's implementation of extracting aviso infomation using regex
-script_content: avisoInfo
-data: dictionary containing all values neede
-
-returns: dictionary 
-
-WIP Problems:
-    Cannot obtain geolocation data now after switching to scraperapi
-
-    Parent: 
-        Where to obtain age, most cases age is not included in the parent property but in child
-        Same as Parking Lots
-
-    Child:
-
-Overall:
-    Child is good to go
-    Parent needs a bit more work
-    Both needs to geolocation implemented in possible
-    
-"""
 def extract_aviso_info(script_content, data):
 
     def extract_field(pattern, default=""):
@@ -160,86 +137,66 @@ def extract_aviso_info(script_content, data):
  
     def grab_icon_data():
         #Grabs data based on posting type
-        if data['Posting Type'] == 'DEVELOPMENT':
+        if data['posting_type'] == 'DEVELOPMENT':
         #parent property
-            data['# of Units'] = extract_field(r'"numberOfUnits":(\d+)')
-            if data['# of Units'] == "":
-                data['# of Units'] = 0
-            data["Latitude"] = extract_field(r'"geolocation":{"latitude":([-+]?[0-9]*\.?[0-9]+)')
-            if data["Latitude"] == "":
-                data["Latitude"] = "N/A"
-            data["Longitude"] = extract_field(r'"geolocation":\{"latitude":[-+]?[0-9]*\.?[0-9]+,"longitude":([-+]?[0-9]*\.?[0-9]+)')
-            if data["Longitude"] == "":
-                data["Longitude"] = "N/A"
-            # data['Bathrooms'] = extract_field2(r'"bathrooms":\{"tuple0":([^,]*),"tuple1":([^}]*)\}')
-            # if data['Bathrooms'] == "":
-            #     data['Bathrooms'] = "N/A"
-            # data['Bedrooms'] = extract_field2(r'"rooms":\{"tuple0":([^,]*),"tuple1":([^}]*)\}')
-            # if data['Bedrooms'] == "":
-            #     data['Bedrooms'] = "N/A"
+            data['number_of_units'] = extract_field(r'"numberOfUnits":(\d+)')
+            if data['number_of_units'] == "":
+                data['number_of_units'] = 0
+            data["latitude"] = extract_field(r'"geolocation":{"latitude":([-+]?[0-9]*\.?[0-9]+)')
+            if data["latitude"] == "":
+                data["latitude"] = "N/A"
+            data["longitude"] = extract_field(r'"geolocation":\{"latitude":[-+]?[0-9]*\.?[0-9]+,"longitude":([-+]?[0-9]*\.?[0-9]+)')
+            if data["longitude"] == "":
+                data["longitude"] = "N/A"
+            data["building_id"] = generate_building_id()
         else:
         #child property
-            data['Parking Lot'] = extract_field3(r'"label":"Estacionamiento","measure":null,"value":"(\d+)"',[r'(\d+)\s*estacionamiento', r'(\d+)\s*parking'])
-            data['Bathrooms'] = extract_field3(r'"label":"[Bb]año[s]?","measure":null,"value":"(\d+)"',[r'(\d+)\s*baño', r'(\d+)\s*bathroom'])
-            data['Half Bathrooms'] = extract_field(r'"label":"[Mm]edio baño[s]?","measure":null,"value":"(\d+)"')
-            data['Price'] = extract_field(r'"formattedAmount":"(.*?)"')
-            data['Bedrooms'] = extract_field3(r'"label":"Recámara","measure":null,"value":"(\d+)"',[r'(\d+)\s*recámara', r'(\d+)\s*bedroom'])
-            data['Age'] = extract_field(r'"label":"[aA]ntigüedad","measure":null,"value":"([^"]*)"')
-            data['Property Dimension(sqft)'] = extract_field3(
+            data['parking_lot'] = extract_field3(r'"label":"Estacionamiento","measure":null,"value":"(\d+)"',[r'(\d+)\s*estacionamiento', r'(\d+)\s*parking'])
+            data['bathrooms'] = extract_field3(r'"label":"[Bb]año[s]?","measure":null,"value":"(\d+)"',[r'(\d+)\s*baño', r'(\d+)\s*bathroom'])
+            data['half_bathrooms'] = extract_field(r'"label":"[Mm]edio baño[s]?","measure":null,"value":"(\d+)"')
+            data['price'] = extract_field(r'"formattedAmount":"(.*?)"')
+            data['bedrooms'] = extract_field3(r'"label":"Recámara","measure":null,"value":"(\d+)"',[r'(\d+)\s*recámara', r'(\d+)\s*bedroom'])
+            data['age'] = extract_field(r'"label":"[aA]ntigüedad","measure":null,"value":"([^"]*)"')
+            data['property_dimension(sqft)'] = extract_field3(
                 r'"label":"Construido","measure":"(.*?)","value":"(\d+)"',
                 [r'(\d+)\s*m²', r'(\d+)\s*sqft'])
-            if data["Price"] == "":
-                data["Price"] = "N/A"
-            if data["Parking Lot"] == "":
-                data["Parking Lot"] = 0
-            if data['Bedrooms'] == "":
-                data['Bedrooms'] = 0
-            if data['Age'] == "A estrenar":
-                data['Age'] = 0
-            if data['Half Bathrooms'] == "":
-                data['Half Bathrooms'] = 0
-            if data["Property Dimension(sqft)"] == "":
-                data["Property Dimension(sqft)"] = "N/A"
+            if data["price"] == "":
+                data["price"] = "N/A"
+            if data["parking_lot"] == "":
+                data["parking_lot"] = 0
+            if data['bedrooms'] == "":
+                data['bedrooms'] = 0
+            if data['age'] == "A estrenar":
+                data['age'] = 0
+            if data['half_bathrooms'] == "":
+                data['half_bathrooms'] = 0
+            if data["property_dimension(sqft)"] == "":
+                data["property_dimension(sqft)"] = "N/A"
 
     # Extract key fields using regex
     #if it's unit property, we want to extract complete data
 
-    data['Title'] = extract_field(r'"title":"(.*?)"')
-    data['GeneratedTitle'] = extract_field3(r'"generatedTitle":"(.*?)"',[r'"title":"(.*?)"'])
-    data['Description'] = extract_field(r'["\']description["\']\s*:\s*["\'](.*?)["\']')
-    # data['Seller'] = extract_field(r"'name':\s*'(.*?)'")
-    data['Publication Date'] = extract_field(r"'publicationDateFormatted':\s*'(.*?)'")
-    data['Posting Type'] = extract_field(r"'postingType': '([^,]*)'")
+    data['title'] = extract_field(r'"title":"(.*?)"')
+    data['generatedtitle'] = extract_field3(r'"generatedTitle":"(.*?)"',[r'"title":"(.*?)"'])
+    data['description'] = extract_field(r'["\']description["\']\s*:\s*["\'](.*?)["\']')
+    data['publication_date'] = extract_field(r"'publicationDateFormatted':\s*'(.*?)'")
+    data['posting_type'] = extract_field(r"'postingType': '([^,]*)'")
     grab_icon_data()
-    data['Address'] = extract_field3(r'"postingLocation":{"address":{"name":"(.*?)","visibility":"EXACT"}',[r"'address':\s*\{[\"]name[\"]:[\"](.*?)[\"]"])
-    data['Pictures'] = re.findall(r'"resizeUrl1200x1200":"(.*?)"', script_content)
-    data['Property Type'] = extract_field(r'[\'"]realEstateType[\'"]:\s*\{[\'"]name[\'"]:\s*[\'"](.*?)[\'"]')
-    data['Operation Type'] = extract_field(r'"operationType":\s*\{"name":"(.*?)"')
+    data['address'] = extract_field3(r'"postingLocation":{"address":{"name":"(.*?)","visibility":"EXACT"}',[r"'address':\s*\{[\"]name[\"]:[\"](.*?)[\"]"])
+    data['pictures'] = re.findall(r'"resizeUrl1200x1200":"(.*?)"', script_content)
+    data['property_type'] = extract_field(r'[\'"]realEstateType[\'"]:\s*\{[\'"]name[\'"]:\s*[\'"](.*?)[\'"]')
+    data['operation_type'] = extract_field(r'"operationType":\s*\{"name":"(.*?)"')
     # data['Country'] = extract_field(r'"label":"PROVINCIA","depth":1,"parent":{"locationId":"[\w-]+","name":"(.*?)"')
-    data['Zone'] = extract_field(r'"label":"ZONA","depth":3,"parent":{"locationId":"[\w-]+","name":"(.*?)"')
-    data['City'] = extract_field(r'"label":"CIUDAD","depth":2,"parent":{"locationId":"[\w-]+","name":"(.*?)"')
-    data['postingId'] = extract_field3(r'"postingId":"(.*?)"',[r"'idAviso':\s*'(.*?)'"])
-    data['postingCode'] = extract_field(r'[\"\']postingCode[\"\']\s*:\s*[\"\'](.*?)[\"\']')
-    data['publisherId'] = extract_field(r"'publisherId':\s*'(\d+)'")
+    data['zone'] = extract_field(r'"label":"ZONA","depth":3,"parent":{"locationId":"[\w-]+","name":"(.*?)"')
+    data['city'] = extract_field(r'"label":"CIUDAD","depth":2,"parent":{"locationId":"[\w-]+","name":"(.*?)"')
+    data['postingid'] = extract_field3(r'"postingId":"(.*?)"',[r"'idAviso':\s*'(.*?)'"])
+    data['postingcode'] = extract_field(r'[\"\']postingCode[\"\']\s*:\s*[\"\'](.*?)[\"\']')
+    data['publisherid'] = extract_field(r"'publisherId':\s*'(\d+)'")
     data['premier'] = extract_field(r'[\"\']?premier[\"\']?\s*:\s*(true|false)')
 
     # Convert lists to comma-separated strings
-    data['Pictures'] = ", ".join(data['Pictures']) 
+    data['pictures'] = ", ".join(data['pictures']) 
 
     return data
 
 
-#Grabbing geo_location_data WIP b/c of some sort of html error w/ page
-def grab_geo_location_data(parser, data):
-    img = parser.css_first('img#static-map')
-    if img:
-        img_src = img.attributes.get('src')
-        pattern = r'center=(-?\d+\.\d+),(-?\d+\.\d+)'
-        lng_and_lat = re.search(pattern, img_src)
-        print(lng_and_lat)
-        data["Latitude"] = lng_and_lat.group(1)
-        data["Longitude"] = lng_and_lat.group(2)
-    else:
-        data["Latitude"] = ""
-        data["Longitude"] = ""
-    return data

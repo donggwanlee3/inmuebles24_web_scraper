@@ -18,6 +18,7 @@ import os
 from bs4 import BeautifulSoup
 from scripts import aws
 import pandas as pd
+import config
 #setting up brightdata
 # Load environment variables from the .env file
 load_dotenv()
@@ -32,6 +33,7 @@ num_of_pages = 1000
 unit_data = []
 building_data = []
 processed_urls = set()
+
 # Scrape 20 properties from the {page_num}
 async def scrape_listing_links(url, page_num):
     async with async_playwright() as pw:
@@ -73,7 +75,7 @@ async def scrape_listing_links(url, page_num):
 # pop one element from the list of urls, see the amount of properties, and then try to figure out if the properties in that 
 # certain area is greater than 20000 properties. If they are, divide into subregion and add them 
 # to the data. if they are not, find out how many pages are there and process the region using 
-async def process_regions_dfs(list_urls):
+async def process_regions_bfs(list_urls):
     while len(list_urls) != 0:
         base_url = list_urls.pop(0)
         print(f'going to url {base_url}')
@@ -127,25 +129,30 @@ async def process_regions_dfs(list_urls):
 
 async def add_coordinate_child():
     # Load the datasets
-    unit_properties_df = pd.read_csv('csv_data/Unit_Properties.csv')
-    building_properties_df = pd.read_csv('csv_data/Building_Properties.csv')
+    unit_properties_df = pd.read_csv(config.unit_properties_path)
+    building_properties_df = pd.read_csv(config.parent_properties_path)
 
-    # Ensure 'Unit Urls' is split correctly into lists
-    building_properties_df['Unit Urls'] = building_properties_df['Unit Urls'].apply(lambda x: x.split(',') if isinstance(x, str) else [])
+    # Ensure 'unit_urls' is split correctly into lists
+    building_properties_df['unit_urls'] = building_properties_df['unit_urls'].apply(lambda x: x.split(',') if isinstance(x, str) else [])
 
     # Create a mapping dictionary for URL to Longitude and Latitude
-    url_to_coords = {}
+    url_to_info = {}
     for index, row in building_properties_df.iterrows():
-        for url in row['Unit Urls']:
-            if url in url_to_coords:
+        for url in row['unit_urls']:
+            if url in url_to_info:
                 continue
-            url_to_coords[url.strip()] = (row['Longitude'], row['Latitude'])
-    # Initialize the Longitude and Latitude columns in unit_properties_df
-    unit_properties_df['Longitude'] = unit_properties_df['URL'].map(lambda x: url_to_coords.get(x, (None, None))[0])
-    unit_properties_df['Latitude'] = unit_properties_df['URL'].map(lambda x: url_to_coords.get(x, (None, None))[1])
+            url_to_info[url.strip()] = {
+                'longitude': row['longitude'],
+                'latitude': row['latitude'],
+                'parent_id': row['building_id']
+            }
 
+    # Initialize the Longitude, Latitude, and Parent ID columns in unit_properties_df
+    unit_properties_df['longitude'] = unit_properties_df['url'].map(lambda x: url_to_info.get(x, {}).get('longitude', None))
+    unit_properties_df['latitude'] = unit_properties_df['url'].map(lambda x: url_to_info.get(x, {}).get('latitude', None))
+    unit_properties_df['parent_id'] = unit_properties_df['url'].map(lambda x: url_to_info.get(x, {}).get('parent_id', None))
     # Save the updated dataframe to the existing CSV file
-    unit_properties_df.to_csv('csv_data/Unit_Properties.csv', index=False)
+    unit_properties_df.to_csv(config.unit_properties_path , index=False)
 
 
 #David: Iterate through pages from 1-1000, go to the website and take 20 listings from it
@@ -153,7 +160,7 @@ async def add_coordinate_child():
 # write it into "parent_data" if the property is parent property
 async def main():
     global unit_data, building_data
-    # await process_regions_dfs(['https://www.inmuebles24.com/inmuebles.html'])
+    # await process_regions_bfs(['https://www.inmuebles24.com/inmuebles.html'])
     await add_coordinate_child()
     await aws.upload_aws()
 
@@ -178,18 +185,18 @@ async def process_listing(url, browser):
     if result_dictionary != None:
         if url in processed_urls:
             return
-        processed_urls.add(result_dictionary["URL"])
+        processed_urls.add(result_dictionary["url"])
         if result_dictionary["is_building"]:
             result_dictionary.pop("is_building", None)
             building_data.append(result_dictionary)
-            with open('csv_data/Building_Properties.csv', 'w', newline='', encoding='utf-8') as f:
+            with open(config.parent_properties_path, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.DictWriter(f, fieldnames=building_data[0].keys())
                 writer.writeheader()
                 writer.writerows(building_data)  
         else:
             result_dictionary.pop("is_building", None)
             unit_data.append(result_dictionary)  
-            with open('csv_data/Unit_Properties.csv', 'w', newline='', encoding='utf-8') as f:
+            with open(config.unit_properties_path, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.DictWriter(f, fieldnames=unit_data[0].keys())
                 writer.writeheader()
                 writer.writerows(unit_data)
