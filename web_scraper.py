@@ -33,6 +33,10 @@ num_of_pages = 1000
 unit_data = []
 building_data = []
 processed_urls = set()
+scraperapi_key = 'your scraper API key here'
+
+def get_scraperapi_url(url):
+    return f'http://api.scraperapi.com?api_key={scraperapi_key}&url={url}'
 
 # Scrape 20 properties from the {page_num}
 async def scrape_listing_links(url, page_num):
@@ -40,8 +44,8 @@ async def scrape_listing_links(url, page_num):
         browser = None
         try:
             # Attempt to connect to the browser using the proxy URL
-            browser = await pw.chromium.connect_over_cdp(browser_url)
-            print("Connected to browser successfully!")
+            browser = await pw.chromium.launch()
+            print("Connected to launched successfully!")
         except Exception as e:
             # If connection fails, print an error message
             print(f"Failed to connect to browser: {e}")
@@ -51,7 +55,8 @@ async def scrape_listing_links(url, page_num):
 
         modified_url = url.replace(".html", f"-pagina-{page_num}.html")
         print(modified_url)
-        await page.goto(modified_url, timeout=120000)
+        
+        await page.goto(get_scraperapi_url(modified_url), timeout=120000)
         print(f'Successfully Opened Inmuebles24 page:{page_num}')
         listing_elements = await page.query_selector_all('div[data-to-posting]')
         print(f'Found {len(listing_elements)} listing elements')
@@ -82,7 +87,7 @@ async def process_regions_bfs(list_urls):
         async with async_playwright() as pw:
             browser = await pw.chromium.connect_over_cdp(browser_url)
             page = await browser.new_page()
-            await page.goto(base_url, timeout=300000)
+            await page.goto(get_scraperapi_url(base_url), timeout=300000)
             page_content = await page.content()
             soup = BeautifulSoup(page_content, 'html.parser')
             
@@ -119,7 +124,7 @@ async def process_regions_bfs(list_urls):
                         region_urls.extend(links)
                         for each_url in region_urls:
                             print(f'Visiting listing URL: {each_url}')
-                            browser = await pw.chromium.connect_over_cdp(browser_url)
+                            browser = await pw.chromium.launch()
                             try: 
                                 await process_listing(each_url, browser)
                             except Exception as e:
@@ -157,7 +162,7 @@ async def add_parent_id():
 # write it into "parent_data" if the property is parent property
 async def main():
     global unit_data, building_data
-    await process_regions_bfs(['https://www.inmuebles24.com/inmuebles.html'])
+    # await process_regions_bfs(['https://www.inmuebles24.com/inmuebles.html'])
     await add_parent_id()
     await aws.upload_aws()
 
@@ -167,7 +172,7 @@ async def main():
 async def one_website():
     listing_url = 'https://www.inmuebles24.com/propiedades/clasificado/veclcain-casa-en-venta-lomas-de-cocoyoc.-olc-4074-141618941.html'
     async with async_playwright() as pw:
-        browser = await pw.chromium.connect_over_cdp(browser_url)
+        browser = await pw.chromium.launch()
         await process_listing(listing_url, browser)
 
         # print(absolute_hrefs)

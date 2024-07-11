@@ -9,6 +9,7 @@ from urllib.parse import urljoin
 from selectolax.parser import HTMLParser
 from playwright.async_api import async_playwright
 import shortuuid
+from web_scraper import get_scraperapi_url
 
 # David: handling formats so that json.loads workds
 def regex_handling(content):
@@ -38,7 +39,7 @@ def regex_handling(content):
 
 async def visit_and_scrape(url, browser):
     page = await browser.new_page()
-    await page.goto(url, timeout=300000)
+    await page.goto(get_scraperapi_url(url), timeout=300000)
 #     await page.goto(url, timeout=300000)
 #     logging.info(f'Successfully Opened webpage {url}')
     # await page.goto(scraperapi_url, timeout=120000)
