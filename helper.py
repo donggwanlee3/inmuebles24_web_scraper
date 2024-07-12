@@ -9,8 +9,11 @@ from urllib.parse import urljoin
 from selectolax.parser import HTMLParser
 from playwright.async_api import async_playwright
 import shortuuid
-from web_scraper import get_scraperapi_url
-
+import os
+import time
+scraperapi_key = 'be1243a9432debe622afc4965c72e1e3'
+def get_scraperapi_url(url):
+    return f'http://api.scraperapi.com?api_key={scraperapi_key}&url={url}'
 # David: handling formats so that json.loads workds
 def regex_handling(content):
         # Replace single quotes around keys with double quotes
@@ -43,6 +46,7 @@ async def visit_and_scrape(url, browser):
 #     await page.goto(url, timeout=300000)
 #     logging.info(f'Successfully Opened webpage {url}')
     # await page.goto(scraperapi_url, timeout=120000)
+    await page.screenshot(path = 'screenshot.png')
     logging.info(f'Successfully Opened webpage {url}')
     page_content = await page.content()
     parser = HTMLParser(page_content)
@@ -56,12 +60,12 @@ async def visit_and_scrape(url, browser):
 
 #David: take out avisoinfo from html
 def scrape_aviso(parser, dictionary):
-    script_tags = parser.css('script')
     target_script = None
+    script_content = None
+    script_tags = parser.css('script')
     for script in script_tags:
         if script.text() and 'const avisoInfo =' in script.text():
             target_script = script
-            break
     if target_script:
         script_content = target_script.text()
     # parse through html and find file that contains avisoInfo
@@ -87,7 +91,7 @@ def building_or_unit(aviso_info_str, dictionary):
             
             if units_found:
                 dictionary['unit_urls'] = units_found
-                child_urls_modified = ['https://www.inmuebles24.com' + url for url in dictionary['Unit Urls']]
+                child_urls_modified = ['https://www.inmuebles24.com' + url for url in dictionary['unit_urls']]
                 dictionary['unit_urls'] = ", ".join(child_urls_modified)
             else:
                 print('No units found in the building property.')
@@ -98,7 +102,7 @@ def building_or_unit(aviso_info_str, dictionary):
     return dictionary
 
 def generate_building_id():
-    return str(shortuuid.uuid4())
+    return str(shortuuid.ShortUUID().random(length=22))
 
 #David: update dictionary from avisoinfo
 def scrape_data_aviso(data, dictionary):

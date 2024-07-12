@@ -23,9 +23,6 @@ import config
 # Load environment variables from the .env file
 load_dotenv()
 #setting up brightdata
-auth = os.getenv('AUTH')
-browser_proxy_url = os.getenv('BROWSER_PROXY_URL')
-browser_url = f'https://{auth}@{browser_proxy_url}'
 scraperapi_key = os.getenv('SCRAPERAPI')
 # &url={url}
 # browser_url = f'http://api.scraperapi.com?api_key={scraperapi_key}'
@@ -33,7 +30,7 @@ num_of_pages = 1000
 unit_data = []
 building_data = []
 processed_urls = set()
-scraperapi_key = 'your scraper API key here'
+child_urls = []
 
 def get_scraperapi_url(url):
     return f'http://api.scraperapi.com?api_key={scraperapi_key}&url={url}'
@@ -81,18 +78,18 @@ async def scrape_listing_links(url, page_num):
 # certain area is greater than 20000 properties. If they are, divide into subregion and add them 
 # to the data. if they are not, find out how many pages are there and process the region using 
 async def process_regions_bfs(list_urls):
+    global child_urls
     while len(list_urls) != 0:
         base_url = list_urls.pop(0)
         print(f'going to url {base_url}')
         async with async_playwright() as pw:
-            browser = await pw.chromium.connect_over_cdp(browser_url)
+            browser = await pw.chromium.launch()
             page = await browser.new_page()
             await page.goto(get_scraperapi_url(base_url), timeout=300000)
             page_content = await page.content()
             soup = BeautifulSoup(page_content, 'html.parser')
-            
             # Extract the number of properties
-            h1_element = soup.select_one('h1.Title-sc-1oqs0ed-0.hJAGeD')
+            h1_element = soup.select_one('h1.Title-sc-1oqs0ed-0')
             if h1_element:
                 text_content = h1_element.get_text()
                 number_str = text_content.split(' ')[0]
@@ -120,17 +117,24 @@ async def process_regions_bfs(list_urls):
                     # should i process through all the page numbers and then go through each list?
                     for page_number in range(1, page_numbers + 1):
                         region_urls = []
+                        browser = await pw.chromium.launch()
                         links = await scrape_listing_links(base_url, page_number)
                         region_urls.extend(links)
                         for each_url in region_urls:
                             print(f'Visiting listing URL: {each_url}')
-                            browser = await pw.chromium.launch()
                             try: 
                                 await process_listing(each_url, browser)
                             except Exception as e:
-                                print(f"An error occurred: {e}")                              
-                            await browser.close()
-                        return
+                                print(f"An error occurred: {e}")
+                        print("child_urls")
+                        for child_url in child_urls:
+                            child_url = child_url.strip()
+                            print(f'Visiting listing URL: {child_url}')
+                            try: 
+                                await process_listing(child_url, browser)
+                            except Exception as e:
+                                print(f"An error occurred: {e}")                  
+                        await browser.close()
     
 
 async def add_parent_id():
@@ -162,7 +166,7 @@ async def add_parent_id():
 # write it into "parent_data" if the property is parent property
 async def main():
     global unit_data, building_data
-    # await process_regions_bfs(['https://www.inmuebles24.com/inmuebles.html'])
+    await process_regions_bfs(['https://www.inmuebles24.com/inmuebles-en-ciudad-de-mexico.html'])
     await add_parent_id()
     await aws.upload_aws()
 
@@ -170,7 +174,7 @@ async def main():
 
 #David: just going through one website. Testing function
 async def one_website():
-    listing_url = 'https://www.inmuebles24.com/propiedades/clasificado/veclcain-casa-en-venta-lomas-de-cocoyoc.-olc-4074-141618941.html'
+    listing_url = 'https://www.inmuebles24.com/propiedades/clasificado/alclapin-renta-de-amplio-departamento-en-cuadrante-neuchatel-143667020.html'
     async with async_playwright() as pw:
         browser = await pw.chromium.launch()
         await process_listing(listing_url, browser)
@@ -179,7 +183,7 @@ async def one_website():
         await browser.close()
 
 async def process_listing(url, browser):
-    global unit_data, building_data, processed_urls
+    global unit_data, building_data, processed_urls, child_urls
     # load new page and go get html file
 
     result_dictionary = await visit_and_scrape(url, browser)
@@ -190,6 +194,9 @@ async def process_listing(url, browser):
         processed_urls.add(result_dictionary["url"])
         if result_dictionary["is_building"]:
             result_dictionary.pop("is_building", None)
+            row_child_urls = result_dictionary['unit_urls']
+            row_child_urls = row_child_urls.split(',')
+            child_urls.extend(row_child_urls)
             building_data.append(result_dictionary)
             with open(config.parent_properties_path, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.DictWriter(f, fieldnames=building_data[0].keys())
