@@ -19,13 +19,13 @@ from bs4 import BeautifulSoup
 from scripts import aws
 import pandas as pd
 import config
+import shutil
 #setting up brightdata
 # Load environment variables from the .env file
 load_dotenv()
 #setting up brightdata
 scraperapi_key = os.getenv('SCRAPERAPI')
-# &url={url}
-# browser_url = f'http://api.scraperapi.com?api_key={scraperapi_key}'
+
 num_of_pages = 1000
 unit_data = []
 building_data = []
@@ -52,8 +52,10 @@ async def scrape_listing_links(url, page_num):
 
         modified_url = url.replace(".html", f"-pagina-{page_num}.html")
         print(modified_url)
-        
-        await page.goto(get_scraperapi_url(modified_url), timeout=120000)
+        try:
+            await page.goto(get_scraperapi_url(modified_url), timeout=120000)
+        except Exception as e:
+            print(f"An error occurred: {e}")
         print(f'Successfully Opened Inmuebles24 page:{page_num}')
         listing_elements = await page.query_selector_all('div[data-to-posting]')
         print(f'Found {len(listing_elements)} listing elements')
@@ -85,7 +87,11 @@ async def process_regions_bfs(list_urls):
         async with async_playwright() as pw:
             browser = await pw.chromium.launch()
             page = await browser.new_page()
-            await page.goto(get_scraperapi_url(base_url), timeout=300000)
+            try:
+                await page.goto(get_scraperapi_url(base_url), timeout=300000)
+            except Exception as e:
+                print(f"An error occurred: {e}")
+                continue
             page_content = await page.content()
             soup = BeautifulSoup(page_content, 'html.parser')
             # Extract the number of properties
@@ -166,13 +172,22 @@ async def add_parent_id():
 # write it into "parent_data" if the property is parent property
 async def main():
     global unit_data, building_data
+    backup_files()
     await process_regions_bfs(['https://www.inmuebles24.com/inmuebles-en-ciudad-de-mexico.html'])
     await add_parent_id()
     await aws.upload_aws()
 
-       
 
-#David: just going through one website. Testing function
+def backup_files():
+    backup_file(config.parent_properties_path)
+    backup_file(config.unit_properties_path)
+
+def backup_file(file_path):
+    backup_path = file_path + ".bak"
+    if os.path.exists(file_path):
+        shutil.copy(file_path, backup_path)
+
+#Just going through one website. Testing function
 async def one_website():
     listing_url = 'https://www.inmuebles24.com/propiedades/clasificado/alclapin-renta-de-amplio-departamento-en-cuadrante-neuchatel-143667020.html'
     async with async_playwright() as pw:

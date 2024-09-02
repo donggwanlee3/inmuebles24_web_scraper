@@ -58,7 +58,7 @@ def upload_geoparquet_to_s3(csv_file, bucket_name, s3_geo_key):
         print("The CSV file does not contain 'latitude' and 'longitude' columns.")
 
 async def upload_aws():
-    bucket_name = 'blackprint-market-data'
+    bucket_name = 'your_bucket_name'
     now = datetime.datetime.now()
     formatted_date = now.strftime("%Y_%m_%d_%H_%M_%S")
     # Upload unit_properties.csv as Parquet
