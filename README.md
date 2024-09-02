@@ -1,6 +1,6 @@
 # Inmuebles24 Web Scraper
 
-This project contains a web scraper built to collect data on real estate properties from the Inmuebles24 website (Mexico). The data is then processed and uploaded to an AWS S3 bucket.
+This repository contains a web scraper built to collect data on real estate properties from the Inmuebles24 website (Mexico). The data is then processed and uploaded to an AWS S3 bucket.
 
 ## Features
 - **Data Collection:** Scrapes all the properties data on Inmuebles24website, achieving approximately 95% data accuracy.
