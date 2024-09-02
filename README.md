@@ -57,9 +57,8 @@ This structure is particularly useful for real estate data where multiple listin
 ### Usage
 
 #### Running Locally Without AWS Setup
-If you want to run the scraper locally without setting up AWS, simply comment out line 173 in `web_scraper.py` and run the script:
+When the web scraper is run, data will be stored in /data folder and uplodaed to AWS. If you want to run the scraper locally without setting up AWS, simply comment out line 173 in `web_scraper.py` and run the script:
 
 ```python
 # Comment out this line in web_scraper.py if not using AWS:
 # await upload_aws()
-When it's run, data will be stored in data folder.
