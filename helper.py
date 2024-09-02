@@ -11,7 +11,7 @@ from playwright.async_api import async_playwright
 import shortuuid
 import os
 import time
-scraperapi_key = 'be1243a9432debe622afc4965c72e1e3'
+
 def get_scraperapi_url(url):
     return f'http://api.scraperapi.com?api_key={scraperapi_key}&url={url}'
 # David: handling formats so that json.loads workds

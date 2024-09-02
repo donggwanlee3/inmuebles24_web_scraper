@@ -6,10 +6,11 @@ from io import BytesIO
 from io import StringIO
 import os
 import datetime
+from dotenv import load_dotenv
 base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'csv_data'))
 unit_properties_path = os.path.join(base_dir, 'unit_properties.csv')
 building_properties_path = os.path.join(base_dir, 'building_properties.csv')
-
+load_dotenv()
 
 def upload_csv_as_parquet_to_s3(csv_file, bucket_name, s3_key):
     # Read the CSV file into a Pandas DataFrame
@@ -58,7 +59,7 @@ def upload_geoparquet_to_s3(csv_file, bucket_name, s3_geo_key):
         print("The CSV file does not contain 'latitude' and 'longitude' columns.")
 
 async def upload_aws():
-    bucket_name = 'your_bucket_name'
+    bucket_name = os.getenv('BUCKET_NAME')
     now = datetime.datetime.now()
     formatted_date = now.strftime("%Y_%m_%d_%H_%M_%S")
     # Upload unit_properties.csv as Parquet
