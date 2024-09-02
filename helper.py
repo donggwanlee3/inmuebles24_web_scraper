@@ -43,10 +43,6 @@ def regex_handling(content):
 async def visit_and_scrape(url, browser):
     page = await browser.new_page()
     await page.goto(get_scraperapi_url(url), timeout=300000)
-#     await page.goto(url, timeout=300000)
-#     logging.info(f'Successfully Opened webpage {url}')
-    # await page.goto(scraperapi_url, timeout=120000)
-    await page.screenshot(path = 'screenshot.png')
     logging.info(f'Successfully Opened webpage {url}')
     page_content = await page.content()
     parser = HTMLParser(page_content)
@@ -58,7 +54,7 @@ async def visit_and_scrape(url, browser):
     return result_data_dictionary
 
 
-#David: take out avisoinfo from html
+#Extract avisoinfo from html
 def scrape_aviso(parser, dictionary):
     target_script = None
     script_content = None

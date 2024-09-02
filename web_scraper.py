@@ -1,6 +1,3 @@
-
-#importing the libraries
-#pip insall everything
 import re
 import json
 import asyncio
@@ -20,10 +17,8 @@ from scripts import aws
 import pandas as pd
 import config
 import shutil
-#setting up brightdata
 # Load environment variables from the .env file
 load_dotenv()
-#setting up brightdata
 scraperapi_key = os.getenv('SCRAPERAPI')
 
 num_of_pages = 1000
@@ -167,7 +162,7 @@ async def add_parent_id():
     unit_properties_df.to_csv(config.unit_properties_path , index=False)
 
 
-#David: Iterate through pages from 1-1000, go to the website and take 20 listings from it
+#Iterate through pages from 1-1000, go to the website and take 20 listings from it
 # , and write it into the csv file "data" if the property is individual property, and 
 # write it into "parent_data" if the property is parent property
 async def main():
@@ -200,7 +195,6 @@ async def one_website():
 async def process_listing(url, browser):
     global unit_data, building_data, processed_urls, child_urls
     # load new page and go get html file
-
     result_dictionary = await visit_and_scrape(url, browser)
     
     if result_dictionary != None:
