@@ -173,7 +173,7 @@ async def add_parent_id():
 async def main():
     global unit_data, building_data
     backup_files()
-    await process_regions_bfs(['https://www.inmuebles24.com/inmuebles-en-ciudad-de-mexico.html'])
+    await process_regions_bfs(['https://www.inmuebles24.com/inmuebles.html'])
     await add_parent_id()
     await aws.upload_aws()
 
