@@ -1,9 +1,9 @@
 # Inmuebles24 Web Scraper
 
-This repository contains a web scraper built to collect data on real estate properties from the Inmuebles24 website (Mexico). The data is then processed and stored in /data folder, and uploaded to an AWS S3 bucket.
+This repository contains a web scraper built to collect data on real estate properties from the Inmuebles24 website (Mexico). The data is then processed and stored in the `/data` folder, and uploaded to an AWS S3 bucket.
 
 ## Features
-- **Data Collection:** Scrapes all the properties data on Inmuebles24website, achieving approximately 95% data accuracy.
+- **Data Collection:** Scrapes all the properties data on the Inmuebles24 website, achieving approximately 95% data accuracy.
 - **Data Processing:** Converts CSV data into Parquet and GeoParquet formats for efficient storage and retrieval.
 - **AWS Integration:** Uploads processed data to an Amazon S3 bucket.
 
@@ -39,11 +39,11 @@ This repository contains a web scraper built to collect data on real estate prop
     BUCKET_NAME='your_bucket_name'
     ```
 
-    You can get your ScraperAPI key [here]([https://www.scraperapi.com/](https://www.scraperapi.com/solutions/scraping-api/)).
+    You can get your ScraperAPI key [here](https://www.scraperapi.com/solutions/scraping-api/).
 
 ### Example Data
 
-Example CSV data files are provided in the `example_csv_data` directory. These files can be used to test the upload functions and ensure that the data is processed correctly.
+Example CSV data files are provided in the `example_csv_data` directory.
 
 ### Parent-Child Property Relationships
 
@@ -57,8 +57,28 @@ This structure is particularly useful for real estate data where multiple listin
 ### Usage
 
 #### Running Locally Without AWS Setup
-When the web scraper is run, data will be stored in /data folder and uplodaed to AWS. If you want to run the scraper locally without setting up AWS, simply comment out line 173 in `web_scraper.py` and run the script:
+When the web scraper is run, data will be stored in the `/data` folder and uploaded to AWS. If you want to run the scraper locally without setting up AWS, simply comment out line 173 in `web_scraper.py` and run the script:
 
 ```python
 # Comment out this line in web_scraper.py if not using AWS:
 # await upload_aws()
+```
+
+Then, to run the scraper, use:
+
+```bash
+python web_scraper.py
+```
+
+### File Structure
+
+- **web_scraper.py** - The main script that runs the web scraping and data upload process.
+- **aws.py** - Contains functions to upload CSV and GeoParquet files to S3.
+- **requirements.txt** - Lists all the Python packages required to run the project.
+- **example_csv_data/** - Directory containing example CSV data files for testing.
+- **/data/** - Directory where scraped data will be stored locally.
+- **.env** - Stores environment variables such as the ScraperAPI key and S3 bucket name.
+
+### Contributions
+
+Feel free to fork this repository, make your changes, and submit a pull request.
